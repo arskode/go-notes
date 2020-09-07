@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  pg:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - pg
+    volumes:
+      - ./:/app
+    ports:
+      - 5000:5000
+    environment: 
+      - DB_URL=postgresql://postgres:postgres@pg/postgres?sslmode=disable

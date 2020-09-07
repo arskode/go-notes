@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS "notes" (
+	"id" BIGSERIAL NOT NULL PRIMARY KEY,
+	"title" VARCHAR(256) NOT NULL,
+	"description" TEXT NOT NULL
+);
